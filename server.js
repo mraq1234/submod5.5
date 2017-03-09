@@ -7,6 +7,7 @@ app.get('/', (req, res) => {
 
 app.use('/store', (req, res, next) => {
     console.log('Jestem pośrednikiem przy żądaniu do /store ');
+    next();
 });
 
 app.get('/store', (req, res) => {
@@ -16,5 +17,6 @@ app.get('/store', (req, res) => {
 app.listen(3000);
 
 app.use((req, res, next) => {
-    res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!')
+    res.status(404).send('Wybacz, nie mogliśmy odnaleźć tego, czego żądasz!');
+    next();
 });
